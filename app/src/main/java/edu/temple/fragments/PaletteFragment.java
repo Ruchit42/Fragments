@@ -19,12 +19,12 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class FragmentA extends Fragment {
+public class PaletteFragment extends Fragment {
   Button button;
   GridView gv;
   View v;
   ButtonClickInterface buttonClickInterface;
-    public FragmentA() {
+    public PaletteFragment() {
         // Required empty public constructor
     }
 
@@ -60,32 +60,7 @@ public class FragmentA extends Fragment {
                buttonClickInterface.buttonClick(position);
                // layout.setBackgroundColor();
 
-               if (p.matches(colors_[0])) {
-                   v.setBackgroundColor(Color.RED);
-                  // Toast.makeText(getActivity(),"Text is "+ view.get,Toast.LENGTH_LONG).show();
-               } else if (p.matches(colors_[1])) {
-                   v.setBackgroundColor(Color.BLUE);
-               } else if (p.matches(colors_[2])) {
-                   v.setBackgroundColor(Color.GREEN);
 
-               } else if (p.matches(colors_[3])) {
-                   v.setBackgroundColor(Color.MAGENTA);
-
-               }else if (p.matches(colors_[4])) {
-
-                   v.setBackgroundColor(Color.GRAY);
-               } else if (p.matches(colors_[5])){
-                   v.setBackgroundColor(Color.WHITE);
-
-               }else if (p.matches(colors_[6])){
-                   v.setBackgroundColor(Color.YELLOW);
-
-               }else if (p.matches(colors_[7])){
-                   v.setBackgroundColor(Color.CYAN);
-
-               } else if (p.matches(colors_[8])){
-                   v.setBackgroundColor(Color.MAGENTA);
-               }
            }
        });
 

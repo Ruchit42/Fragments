@@ -6,15 +6,12 @@
     tools:context=".FragmentA">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
     <GridView
         android:id="@+id/GW"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="3" />
+        android:numColumns="3"
+        android:scrollbarSize="4dp" />
 
 </FrameLayout>

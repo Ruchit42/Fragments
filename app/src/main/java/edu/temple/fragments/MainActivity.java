@@ -10,17 +10,18 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements FragmentA.ButtonClickInterface {
+public class MainActivity extends AppCompatActivity implements PaletteFragment.ButtonClickInterface {
 
 
-
+    PaletteFragment fragmentA = new PaletteFragment();
+    CanvasFragment fragmentB = new CanvasFragment();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        FragmentA fragmentA = new FragmentA();
-        FragmentB fragmentB = new FragmentB();
+       setTitle(R.string.Main_title);
+//        FragmentA fragmentA = new FragmentA();
+//        FragmentB fragmentB = new FragmentB();
 
         FragmentManager fm =getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
@@ -31,7 +32,8 @@ public class MainActivity extends AppCompatActivity implements FragmentA.ButtonC
         fg.add(R.id.frameTwo,fragmentB).commit();
     }
     public void buttonClick(int posotion){
-        Toast.makeText(this,"You have clicked the button number"+ posotion,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"You have clicked the button number"+ posotion,Toast.LENGTH_SHORT).show();
+        fragmentB.changeColor(posotion);
     }
 
 }
