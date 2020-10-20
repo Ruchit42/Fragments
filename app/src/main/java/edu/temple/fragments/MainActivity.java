@@ -30,9 +30,10 @@ public class MainActivity extends AppCompatActivity implements PaletteFragment.B
         FragmentManager fp =getSupportFragmentManager();
         FragmentTransaction fg = fp.beginTransaction();
         fg.add(R.id.frameTwo,fragmentB).commit();
+
     }
     public void buttonClick(int posotion){
-        //Toast.makeText(this,"You have clicked the button number"+ posotion,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"You have clicked the button number"+ posotion,Toast.LENGTH_SHORT).show();
         fragmentB.changeColor(posotion);
     }
 
