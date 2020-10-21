@@ -23,9 +23,15 @@ public class PaletteFragment extends Fragment {
   Button button;
   GridView gv;
   View v;
+  //public palettefragListener parentAct;
+     String[] colors_;
+    private static final String COLOR_GRID = "colorGrid";
   ButtonClickInterface buttonClickInterface;
     public PaletteFragment() {
         // Required empty public constructor
+    }
+    public interface ButtonClickInterface{
+        void OnInputPallette(int num);
     }
 
     @Override
@@ -36,6 +42,13 @@ public class PaletteFragment extends Fragment {
         }else{
             throw new RuntimeException("You must implement");
         }
+    }
+    public static PaletteFragment newInstance(String [] colors){
+        PaletteFragment paletteFragment = new PaletteFragment();
+        Bundle args = new Bundle();
+        args.putStringArray(COLOR_GRID,colors);
+        paletteFragment.setArguments(args);
+        return paletteFragment;
     }
 
     @Override
@@ -48,16 +61,15 @@ public class PaletteFragment extends Fragment {
        // gv = v.findViewById(R.id.GW);
         gv = (GridView) v.findViewById(R.id.GW);
         Resources res = getResources();
-        final String[] colors_ = res.getStringArray(R.array.all_colors);
+         String[] colors_ = res.getStringArray(R.array.all_colors);
         final BaseAdapter adapter = new CustomAdapter(getActivity(), colors_);
        gv.setAdapter(adapter);
        gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
            @Override
            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                String p = parent.getItemAtPosition(position).toString();
-               //Toast.makeText(MainActivity.this, p, Toast.LENGTH_SHORT).show();
-               // view.setBackgroundColor(Color.WHITE);
-               buttonClickInterface.buttonClick(position);
+
+               buttonClickInterface.OnInputPallette(position);
                // layout.setBackgroundColor();
 
 
@@ -65,15 +77,8 @@ public class PaletteFragment extends Fragment {
        });
 
 
-
-
-
-
-
         return v;
     }
-    interface ButtonClickInterface{
-        void buttonClick(int posotion);
-    }
+
 
 }

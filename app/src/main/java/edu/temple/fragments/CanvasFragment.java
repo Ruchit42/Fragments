@@ -17,8 +17,28 @@ import android.widget.TextView;
 
         View w;
         TextView textView;
+        private static final String ARG_PARAM1 = "param1";
+        private static final String ARG_PARAM2 = "param2";
+        private String mParam1;
+        private String mParam2;
         public CanvasFragment() {
             // Required empty public constructor
+        }
+
+        public static CanvasFragment newInstance(String param1, String param2){
+            CanvasFragment canvasFragment = new CanvasFragment();
+            Bundle args = new Bundle();
+            args.putString((ARG_PARAM1),param1);
+            args.putString((ARG_PARAM2),param2);
+            canvasFragment.setArguments(args);
+            return canvasFragment;
+        }
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            if (getArguments() != null) {
+                mParam1 = getArguments().getString(ARG_PARAM1);
+                mParam2 = getArguments().getString(ARG_PARAM2);
+            }
         }
 
 
@@ -26,49 +46,13 @@ import android.widget.TextView;
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             // Inflate the layout for this fragment
-            w =  inflater.inflate(R.layout.fragment_b, container, false);
-            textView = w.findViewById(R.id.colorName);
-            Resources res = getResources();
-            final String[] colors_ = res.getStringArray(R.array.all_colors);
+           return inflater.inflate(R.layout.fragment_b, container, false);
+           // textView = w.findViewById(R.id.colorName);
+            //Resources res = getResources();
+           // final String[] colors_ = res.getStringArray(R.array.all_colors);
 
             // w.setBackgroundColor(Color.BLUE);
-            return w;
+           // return w;
         }
-        public void changeColor(int posotion){
-            if (posotion ==0) {
-                w.setBackgroundColor(Color.RED);
-                textView.setText(R.string.color_red);
 
-                // Toast.makeText(getActivity(),"Text is "+ view.get,Toast.LENGTH_LONG).show();
-            } else if (posotion ==1) {
-                w.setBackgroundColor(Color.BLUE);
-                textView.setText(R.string.color_blue);
-            } else if (posotion ==2) {
-                w.setBackgroundColor(Color.GREEN);
-                textView.setText(R.string.color_green);
-
-            } else if (posotion ==3) {
-                w.setBackgroundColor(Color.MAGENTA);
-                textView.setText(R.string.color_pink);
-
-            }else if (posotion ==4) {
-                w.setBackgroundColor(Color.GRAY);
-                textView.setText(R.string.color_gray);
-            } else if (posotion ==5){
-                w.setBackgroundColor(Color.WHITE);
-                textView.setText(R.string.color_white);
-
-            }else if (posotion ==6){
-                w.setBackgroundColor(Color.YELLOW);
-                textView.setText(R.string.color_yellow);
-
-            }else if (posotion ==7){
-                w.setBackgroundColor(Color.CYAN);
-                textView.setText(R.string.color_cyan);
-
-            } else if (posotion ==8){
-                w.setBackgroundColor(Color.MAGENTA);
-                textView.setText(R.string.color_purple);
-            }
-        }
     }
